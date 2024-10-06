@@ -1,4 +1,4 @@
-const cards = ['🍎', '🍌', '🍇', '🍓', '🍊', '🍉', '🍍', '🍒']; // 8 ícones para garantir variedade
+const cards = ['🍎', '🍌', '🍇', '🍓', '🍊', '🍉', '🍍', '🍒']; 
 let gameCards = [];
 let firstCard = null;
 let secondCard = null;
@@ -7,7 +7,7 @@ let score = 0;
 let playerName = '';
 const maxPairs = { easy: 3, hard: 6 };
 
-// Limpa o ranking sempre que a página for carregada
+
 localStorage.removeItem('rankings');
 
 document.getElementById('start-button').addEventListener('click', startGame);
@@ -55,7 +55,7 @@ function flipCard() {
 function checkMatch() {
     if (firstCard.textContent === secondCard.textContent) {
         matchedPairs++;
-        score += 10; // Pontuação por acerto
+        score += 10; 
         resetCards();
         if (matchedPairs === (gameCards.length / 2)) {
             endGame();
@@ -86,20 +86,17 @@ function endGame() {
 }
 
 function restartGame() {
-    // Reseta o jogo
     score = 0;
     matchedPairs = 0;
     firstCard = null;
     secondCard = null;
 
     const board = document.getElementById('board');
-    board.innerHTML = ''; // Limpa o tabuleiro
-
-    // Reseta o resultado
+    board.innerHTML = ''; 
     document.getElementById('result').classList.add('hidden');
     board.classList.add('hidden');
 
-    // Reinicia o jogo com a mesma dificuldade
+    
     const playerNameInput = document.getElementById('player-name');
     if (playerNameInput.value) {
         playerName = playerNameInput.value;
@@ -108,11 +105,11 @@ function restartGame() {
     const difficulty = document.getElementById('difficulty').value;
     const totalPairs = maxPairs[difficulty];
 
-    // Embaralha as cartas
+    
     gameCards = [...cards.slice(0, totalPairs), ...cards.slice(0, totalPairs)];
     gameCards.sort(() => 0.5 - Math.random());
 
-    // Cria as cartas novamente
+    
     gameCards.forEach((card, index) => {
         const cardElement = document.createElement('div');
         cardElement.classList.add('card');
@@ -121,7 +118,7 @@ function restartGame() {
         board.appendChild(cardElement);
     });
 
-    board.classList.remove('hidden'); // Exibe o tabuleiro
+    board.classList.remove('hidden'); 
 }
 
 function saveRanking(name, score) {
@@ -141,16 +138,16 @@ function displayRanking() {
 }
 
 function goHome() {
-    // Limpa o nome do jogador e a pontuação
+    
     playerName = '';
     score = 0;
     matchedPairs = 0;
 
-    // Esconde o tabuleiro e os resultados
+    
     document.getElementById('board').classList.add('hidden');
     document.getElementById('result').classList.add('hidden');
 
-    // Reseta os inputs
+    
     document.getElementById('player-name').value = '';
-    document.getElementById('difficulty').value = 'easy'; // Reseta para a dificuldade padrão
+    document.getElementById('difficulty').value = 'easy'; 
 }
