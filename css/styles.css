@@ -33,24 +33,24 @@ body {
 
 #board {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 colunas */
-    gap: 10px; /* Espaçamento entre cartas */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 10px; 
     margin: 20px;
 }
 
 .card {
-    width: 100px; /* Largura das cartas */
-    height: 100px; /* Altura das cartas */
-    background-color: #ccc; /* Cor de fundo das cartas */
+    width: 100px; 
+    height: 100px; 
+    background-color: #ccc;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2em; /* Tamanho do emoji */
+    font-size: 2em; 
     cursor: pointer;
 }
 
 .card.flipped {
-    background-color: #fff; /* Cor de fundo quando a carta é virada */
+    background-color: #fff; 
 }
 
 
